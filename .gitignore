@@ -25,5 +25,4 @@ dist-ssr
 
 # apollo files
 
-./apolo/index.html.js
 ./src/lib/apollo.ts
