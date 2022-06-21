@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# apollo files
+
+./apolo/index.html.js
+./src/lib/apollo.ts
