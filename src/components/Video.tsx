@@ -71,7 +71,8 @@ export function Video(props: VideoProps) {
 
           <div className="flex flex-col gap-4 ">
             <a
-              href=""
+              href="https://discord.gg/txPXAZgFbd"
+              target='_blank'
               className="p-4 text-sm bg-green-500 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-green-700 transition-color "
             >
               <DiscordLogo size={24} />
@@ -90,7 +91,7 @@ export function Video(props: VideoProps) {
 
         <div className="gap-8 mt-20 grid grid-cols-2">
           <a
-            href=""
+            href="#"
             className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-color"
           >
             <div className="bg-green-700 h-full p-6 flex items-center">
@@ -108,7 +109,7 @@ export function Video(props: VideoProps) {
           </a>
 
           <a
-            href=""
+            href="#"
             className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-color"
           >
             <div className="bg-green-700 h-full p-6 flex items-center">
