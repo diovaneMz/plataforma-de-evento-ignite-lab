@@ -1,29 +1,42 @@
-import { gql, useMutation } from "@apollo/client";
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../components/Logo";
-import { useCreateSubscriberMutation } from "../graphql/generated";
+import { useCreateSubscriberMutation, useGetLessonsQueryQuery } from "../graphql/generated";
+
+
+interface githubProps {
+  headers: {
+    client_id: string;
+    redirect_uri: string;
+    login: string;
+    escopo: string;
+  }
+}
 
 export function Subscribe() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { data } = useGetLessonsQueryQuery()
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  const [createSubscriber, { loading }] = useCreateSubscriberMutation() 
+  const [createSubscriber, { loading }] = useCreateSubscriberMutation();
+
   async function handleSubscribe(event: FormEvent) {
-    event.preventDefault()
+    event.preventDefault();
 
     await createSubscriber({
       variables: {
         name,
         email,
-      }
-    })
+      },
+    });
 
-    navigate('/event')
+    navigate(`/event/lesson/${data?.lessons[0].slug}`);
   }
-  
+
+  console.log(data?.lessons[0].slug)
+
   return (
     <div className="min-h-screen bg-blur bg-cover bg-no-repeat flex flex-col items-center">
       <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
@@ -45,19 +58,19 @@ export function Subscribe() {
           <strong className="text-2xl mb-6 block">Inscreva-se gratuitamente</strong>
 
           <form onSubmit={handleSubscribe} className="flex flex-col gap-2 w-full">
-            <input 
+            <input
               className="bg-gray-900 rounded px-5 h-14"
-              type="text" 
+              type="text"
               placeholder="Seu nome completo"
-              onChange={event => setName(event.target.value)}
+              onChange={(event) => setName(event.target.value)}
             />
-            <input 
+            <input
               className="bg-gray-900 rounded px-5 h-14"
-              type="email" 
-              placeholder="Digite seu e-mail" 
-              onChange={event => setEmail(event.target.value)}
+              type="email"
+              placeholder="Digite seu e-mail"
+              onChange={(event) => setEmail(event.target.value)}
             />
-            <button 
+            <button
               type="submit"
               disabled={loading}
               className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50"
