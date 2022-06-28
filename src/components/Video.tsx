@@ -9,8 +9,11 @@ import {
 
 import "@vime/core/themes/default.css";
 import { useGetLessonBySlugQuery } from "../graphql/generated";
+import { isMatch } from "date-fns";
+import classNames from "classnames";
 
 interface VideoProps {
+  isMenuActive: boolean;
   lessonSlug: string;
 }
 
@@ -33,7 +36,10 @@ export function Video(props: VideoProps) {
   }
 
   return (
-    <div className="flex-1">
+    <div className={classNames('',{
+      'hidden': props.isMenuActive,
+      'flex-1': !props.isMenuActive
+    })}>
       <div className="bg-black">
         <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video mx-auto">
           <Player>
