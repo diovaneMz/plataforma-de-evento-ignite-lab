@@ -32,6 +32,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Plataforma de Eventos é um projeto desenvolvido para acompanhar eventos, o site é totalmente responsivo e pode ser usado tanto para eventos ao vivo quanto para eventos gravados.
 
+[Clique aqui](https://plataforma-de-evento-ignite-lab-seven.vercel.app/) para acessar o projeto.
+
 ## 🔖 Layout
 
 Você pode visualizar o layout do projeto através deste link [desse link](https://www.figma.com/community/file/1120711251998877938).
